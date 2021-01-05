@@ -1,4 +1,6 @@
 const config = {
+    STRIPE_KEY: "pk_test_51I37YwLKL24ksnnqb3znXjzegBywUCtLoQA2H9Gzpj35fVaazL7UOoHkHx2Sf7z8sppxUjmwP6XuiPEUdEca3Bhy00wlJzI36h",
+    MAX_ATTACHMENT_SIZE: 5000000,
     s3: {
         REGION: "us-east-2",
         BUCKET: "jgordley-notes-app-upload",
