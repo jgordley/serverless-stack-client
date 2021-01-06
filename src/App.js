@@ -6,6 +6,7 @@ import { LinkContainer } from "react-router-bootstrap";
 import Routes from "./Routes";
 import { AppContext } from "./libs/contextLib";
 import { useHistory } from "react-router-dom";
+import ErrorBoundary from "./components/ErrorBoundary";
 import { onError } from "./libs/errorLib";
 import "./App.css";
 
@@ -59,21 +60,23 @@ function App() {
                   <Nav.Link onClick={handleLogout}>Logout</Nav.Link>
                 </>
               ) : (
-                <>
-                  <LinkContainer to="/signup">
-                    <Nav.Link>Signup</Nav.Link>
-                  </LinkContainer>
-                  <LinkContainer to="/login">
-                    <Nav.Link>Login</Nav.Link>
-                  </LinkContainer>
-                </>
-              )}
+                  <>
+                    <LinkContainer to="/signup">
+                      <Nav.Link>Signup</Nav.Link>
+                    </LinkContainer>
+                    <LinkContainer to="/login">
+                      <Nav.Link>Login</Nav.Link>
+                    </LinkContainer>
+                  </>
+                )}
             </Nav>
           </Navbar.Collapse>
         </Navbar>
-        <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
-          <Routes />
-        </AppContext.Provider>
+        <ErrorBoundary>
+          <AppContext.Provider value={{ isAuthenticated, userHasAuthenticated }}>
+            <Routes />
+          </AppContext.Provider>
+        </ErrorBoundary>
       </div>
     )
   );
